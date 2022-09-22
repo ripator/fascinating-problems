@@ -11,3 +11,4 @@ const simpleCPrintf = (inputString, ...characters) => {
 }
 
 simpleCPrintf("ASCII value = %d, Charachter = %s, number = %d, etc.", 'string', 15, 31);
+// output --- ASCII value = 15, Charachter = string, number = 31, etc.
