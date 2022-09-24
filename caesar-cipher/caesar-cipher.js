@@ -2,8 +2,7 @@ const englishAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const decimals = '0123456789';
 const specialCharacters = /[-._!"`'#%&,:;<>=@{}~\$\(\)\*\+\/\\\?\[\]\^\|]+/;
 
-const caesarCipherEnglish = (value) => {
-   const cipherStep = 2;
+const encodeCaesarCipherEnglish = (value, offset) => {
    const manipulatableString = String(value).toUpperCase();
    const manipulatableStringArray = manipulatableString.trim().split('');
 
@@ -12,17 +11,17 @@ const caesarCipherEnglish = (value) => {
       const indexOfCharInDecimals = decimals.indexOf(char);
 
       if (indexOfCharInAlphabet !== -1) {
-         if (indexOfCharInAlphabet >= englishAlphabet.length - cipherStep) {
-            return englishAlphabet[indexOfCharInAlphabet - (englishAlphabet.length - cipherStep)];
+         if (indexOfCharInAlphabet + offset >= englishAlphabet.length) {
+            return englishAlphabet[indexOfCharInAlphabet - (englishAlphabet.length - offset)];
          }
-         return englishAlphabet[indexOfCharInAlphabet + cipherStep];
+         return englishAlphabet[indexOfCharInAlphabet + offset];
       }
 
       if (indexOfCharInDecimals !== -1) {
-         if (indexOfCharInDecimals >= decimals.length - cipherStep) {
-            return Number(decimals[indexOfCharInDecimals - (decimals.length - cipherStep)]);
+         if (indexOfCharInDecimals + offset >= decimals.length) {
+            return Number(decimals[indexOfCharInDecimals - (decimals.length - offset)]);
          }
-         return Number(decimals[indexOfCharInDecimals + cipherStep]);
+         return Number(decimals[indexOfCharInDecimals + offset]);
       }
       
       if (char === ' ' || char.match(specialCharacters)) {
@@ -33,10 +32,8 @@ const caesarCipherEnglish = (value) => {
    return cipheredText.join('');
 }
 
-console.log(caesarCipherEnglish('Some text here, bla bla bla 129 !')); 
+console.log(encodeCaesarCipherEnglish('Some text here, bla bla bla 129 !', 2)); 
 // UQOG VGZV JGTG, DNC DNC DNC 341 !
-console.log(caesarCipherEnglish(87)); 
-// 09
-console.log(caesarCipherEnglish('Z'));
-// B
+console.log(encodeCaesarCipherEnglish(87, 1)); //98
+console.log(encodeCaesarCipherEnglish('Z', 3)); // C
 
