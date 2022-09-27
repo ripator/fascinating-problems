@@ -3,11 +3,11 @@ const decimalToBinaryString = (value) => {
       throw "Error: Value should be a number."
    }
    if (value >= 0) {
-      let binaryValue = (value >>> 0).toString(2);
-      // while (binaryValue.length < 32) {
-      //    binaryValue = '0' + binaryValue;
-      // }
-      return binaryValue; 
+      let binaryValue = (value).toString(2);
+      while (binaryValue.length < 32) {
+         binaryValue = '0' + binaryValue;
+      }
+      return binaryValue;
    } else {
       return (value >>> 0).toString(2);
    }
@@ -17,11 +17,11 @@ const areStringFirstAndLastElementsEqual = (value) => {
    return value[0] === value[value.length - 1];
 }
 
-const isNumberBinaryFirstLastEqual = (value) => {
+const hasBinaryStringSameFirstAndLastElems = (value) => {
    return areStringFirstAndLastElementsEqual(decimalToBinaryString(value));
 }
 
 console.log(decimalToBinaryString(-5)); // 11111111111111111111111111111011
-console.log(isNumberBinaryFirstLastEqual(-5)); // true
+console.log(hasBinaryStringSameFirstAndLastElems(-5)); // true
 console.log(decimalToBinaryString(15)); // 00000000000000000000000000001111
-console.log(isNumberBinaryFirstLastEqual(15)); // false
+console.log(hasBinaryStringSameFirstAndLastElems(15)); // false
