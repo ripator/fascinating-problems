@@ -8,7 +8,6 @@ const isStringWithUniqueChars = (value) => {
       if (table & (1 << position)){
          return false;
       } else {
-         console.log(table/toString(2));
          table |= (1 << position);
       }
    }
