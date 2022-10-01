@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const generateCharsMap = (chars) => {
    const charsMap = new Map();
 
@@ -49,9 +51,10 @@ const upto16AllPossibleStrings = () => {
    let array16Symbols = generateArrayWithGivenValue(16, emptyValue);
    const lastKeyInMap = [...allCharsMap.keys()].pop();
 
-   for (let i = 0; i < Math.pow(16, allCharsArray.length) - 1; i++) {
+   for (let i = 0; i < Math.pow(allCharsArray.length, 16) - 1; i++) {
       incrementArrayValues(array16Symbols, lastKeyInMap);
-      console.log(decodeMapValues(allCharsMap, array16Symbols));
+      const decodedString = decodeMapValues(allCharsMap, array16Symbols);
+      fs.appendFileSync('demo.txt', `${decodedString}\n`);
    }
 }
 
