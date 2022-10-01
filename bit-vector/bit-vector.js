@@ -26,7 +26,10 @@ class BitVector {
       const bitModuleQuantity = this.#getBitModuleQuantity(position);
       const selectedIndex = this.#getTableArrayIndex(bitModuleQuantity);
       const selectedBitIndex = this.#getSelectedBitIndex(bitModuleQuantity, position);
-
+      
+      if(this.tableArray.length < bitModuleQuantity) {
+         return 0;
+      }
 
       return (this.tableArray[selectedIndex] & (1 << selectedBitIndex)) === 0 ? 0 : 1;
    }
@@ -56,4 +59,5 @@ console.log(bitVector.getBitByPositon(40)); // 0
 
 bitVector.setBitPyPosition(105, 1);
 console.log(bitVector.getBitByPositon(105)); // 1
+console.log(bitVector.getBitByPositon(1120)); // 0
 
