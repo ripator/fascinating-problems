@@ -4,7 +4,7 @@ const set1ToPosition = (position) => {
 
 // sets 0 to bit
 const resetBitByPosition = (num, position) => {
-   const mask = set1ToPosition(position);
+   const mask = ~set1ToPosition(position);
    return mask & num;
 }
 
@@ -16,5 +16,5 @@ const setBitByPosition = (num, position) => {
 
 const setBit = (num, position, reset = false) => {
    const mask = set1ToPosition(position);
-   return reset ? (num & mask) : (num | mask);
+   return reset ? (num & ~mask) : (num | mask);
 }
