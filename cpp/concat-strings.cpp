@@ -15,7 +15,6 @@ void strCat(char* s1, char* s2) {
     int s1Len = getStrLen(s1);
     int s2Len = getStrLen(s2);
     
-    char newArr[s1Len + s2Len];
     int s1LastIndex = s1Len;
     int s2Index = 0;
 
