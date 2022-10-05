@@ -28,7 +28,7 @@ void strCat(char* s1, char* s2) {
 
 int main()
 {
-    char str1[] = "hello";
+    char str1[20] = "hello";
     char str2[] = "world";
     strCat(str1, str2);
     cout<<str1; //helloworld
