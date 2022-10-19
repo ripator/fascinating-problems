@@ -4,7 +4,7 @@ using namespace std;
 
 template<typename T>
 T* expandArr (T*& arr, int size, int new_size) {
-   if (new_size > 0) {
+   if (new_size > size) {
       T* new_arr = new T[new_size];
    
       for(int i = 0; i < size; ++i) {
